@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_frame/http/http_utils.dart';
+import 'package:flutter_frame/utils/constant.dart';
 
 void main() {
+  HttpUtils.init(baseUrl: Constant.baseUrl);
   runApp(MyApp());
 }
 
