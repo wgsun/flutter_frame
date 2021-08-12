@@ -35,53 +35,56 @@ class AppException implements Exception {
       case DioErrorType.RECEIVE_TIMEOUT:
         return BadRequestException("响应超时");
       case DioErrorType.RESPONSE:
-        try {
-          int errCode = error.response.statusCode;
-          switch (errCode) {
-            case 400:
-              {
-                return BadRequestException("请求语法错误");
-              }
-            case 401:
-              {
-                return UnauthorisedException(errCode, "没有权限");
-              }
-            case 403:
-              {
-                return UnauthorisedException(errCode, "服务器拒绝执行");
-              }
-            case 404:
-              {
-                return UnauthorisedException(errCode, "无法连接服务器");
-              }
-            case 405:
-              {
-                return UnauthorisedException(errCode, "请求方法被禁止");
-              }
-            case 500:
-              {
-                return UnauthorisedException(errCode, "服务器内部错误");
-              }
-            case 502:
-              {
-                return UnauthorisedException(errCode, "无效的请求");
-              }
-            case 503:
-              {
-                return UnauthorisedException(errCode, "服务器挂了");
-              }
-            case 505:
-              {
-                return UnauthorisedException(errCode, "不支持HTTP协议请求");
-              }
-            default:
-              {
-                return AppException(error.response.statusMessage);
-              }
+        {
+          try {
+            int errCode = error.response.statusCode;
+            switch (errCode) {
+              case 400:
+                {
+                  return BadRequestException("请求语法错误");
+                }
+              case 401:
+                {
+                  return UnauthorisedException(errCode, "没有权限");
+                }
+              case 403:
+                {
+                  return UnauthorisedException(errCode, "服务器拒绝执行");
+                }
+              case 404:
+                {
+                  return UnauthorisedException(errCode, "无法连接服务器");
+                }
+              case 405:
+                {
+                  return UnauthorisedException(errCode, "请求方法被禁止");
+                }
+              case 500:
+                {
+                  return UnauthorisedException(errCode, "服务器内部错误");
+                }
+              case 502:
+                {
+                  return UnauthorisedException(errCode, "无效的请求");
+                }
+              case 503:
+                {
+                  return UnauthorisedException(errCode, "服务器挂了");
+                }
+              case 505:
+                {
+                  return UnauthorisedException(errCode, "不支持HTTP协议请求");
+                }
+              default:
+                {
+                  return AppException(error.response.statusMessage);
+                }
+            }
+          } on Exception catch (_) {
+            return AppException("未知错误");
           }
-        } on Exception catch (_) {
-          return AppException("未知错误");
         }
+      break;
       default:
         return AppException(error.message);
     }

@@ -7,7 +7,7 @@ class RetryOnConnectionChangeInterceptor extends Interceptor {
 
   final DioConnectivityRequestRetriver requestRetriver;
   
-  RetryOnConnectionChangeInterceptor({required this.requestRetriver});
+  RetryOnConnectionChangeInterceptor({this.requestRetriver});
 
   @override
   Future onError(DioError err) async{

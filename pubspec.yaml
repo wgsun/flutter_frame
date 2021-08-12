@@ -17,8 +17,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  #sdk 版本>=2.12.0 项目支持null safety
+  sdk: ">=2.11.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -84,5 +86,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_intl:
-  enabled: true
+#flutter_intl:
+  #enabled: true

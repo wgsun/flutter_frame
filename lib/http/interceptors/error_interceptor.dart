@@ -31,7 +31,7 @@ class ErrorInterceptor extends InterceptorsWrapper {
 
       ///登录失效
       if (code == '1001') {
-        RouterGlobal.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        RouterGlobal.navigatorKey.currentState.pushNamedAndRemoveUntil(
             LoginRouter.loginPage, ModalRoute.withName("/"));
         //BuildContext? context = RouterGlobal.navigatorKey.currentContext;
         return Http.dio

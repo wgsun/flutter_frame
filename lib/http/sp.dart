@@ -12,7 +12,7 @@ class SpUtil {
     init();
   }
 
-  static late SharedPreferences _prefs;
+  static SharedPreferences _prefs;
 
   static Future<void> init() async {
     if (_prefs == null) {
@@ -26,7 +26,7 @@ class SpUtil {
   }
 
   dynamic getJSON(String key) {
-    String? jsonString = _prefs.getString(key);
+    String jsonString = _prefs.getString(key);
     return jsonString == null ? null : jsonDecode(jsonString);
   }
 
@@ -35,7 +35,7 @@ class SpUtil {
   }
 
   bool getBool(String key) {
-    bool? val = _prefs.getBool(key);
+    bool val = _prefs.getBool(key);
     return val == null ? false : val;
   }
 

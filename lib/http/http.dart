@@ -18,7 +18,7 @@ class Http {
 
   static final Http _instance = Http._privateConstrucrot();
 
-  static late Dio dio;
+  static Dio dio;
 
   CancelToken _cancelToken = new CancelToken();
 
@@ -80,10 +80,10 @@ class Http {
   /// [receiveTimeout] 接收超时赶时间
   /// [interceptors] 基础拦截器
   void init(
-      {String? baseUrl,
-      int? connectTimeout,
-      int? receiveTimeout,
-      List<Interceptor>? interceptors}) {
+      {String baseUrl,
+      int connectTimeout,
+      int receiveTimeout,
+      List<Interceptor> interceptors}) {
     dio.options = dio.options.merge(
         baseUrl: baseUrl,
         connectTimeout: connectTimeout,
@@ -99,7 +99,7 @@ class Http {
   }
 
   ///取消请求
-  void cancelRequests({CancelToken? token}) {
+  void cancelRequests({CancelToken token}) {
     token ?? _cancelToken.cancel("cancelled");
   }
 
@@ -117,12 +117,12 @@ class Http {
   ///get请求
   Future get(
     String path, {
-    Map<String, dynamic>? params,
-    Options? options,
-    CancelToken? cancelToken,
+    Map<String, dynamic> params,
+    Options options,
+    CancelToken cancelToken,
     bool refresh = false,
     bool nocache = !CACHE_ENABLE,
-    String? cacheKey,
+    String cacheKey,
     bool cacheDisk = false,
   }) async {
     Options requestOptions = options ?? Options();
@@ -147,10 +147,10 @@ class Http {
   /// restful post 操作
   Future post(
     String path, {
-    Map<String, dynamic>? params,
+    Map<String, dynamic> params,
     data,
-    Options? options,
-    CancelToken? cancelToken,
+    Options options,
+    CancelToken cancelToken,
   }) async {
     Options requestOptions;
     if (options == null) {
@@ -175,9 +175,9 @@ class Http {
   Future put(
     String path, {
     data,
-    Map<String, dynamic>? params,
-    Options? options,
-    CancelToken? cancelToken,
+    Map<String, dynamic> params,
+    Options options,
+    CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
 
@@ -197,9 +197,9 @@ class Http {
   Future patch(
     String path, {
     data,
-    Map<String, dynamic>? params,
-    Options? options,
-    CancelToken? cancelToken,
+    Map<String, dynamic> params,
+    Options options,
+    CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
     Map<String, dynamic> _authorization = getAuthorizationHeader();
@@ -218,9 +218,9 @@ class Http {
   Future delete(
     String path, {
     data,
-    Map<String, dynamic>? params,
-    Options? options,
-    CancelToken? cancelToken,
+    Map<String, dynamic> params,
+    Options options,
+    CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
 
@@ -239,9 +239,9 @@ class Http {
   /// restful post form 表单提交操作
   Future postForm(
     String path, {
-    Map<String, dynamic>? params,
-    Options? options,
-    CancelToken? cancelToken,
+    Map<String, dynamic> params,
+    Options options,
+    CancelToken cancelToken,
   }) async {
     Options requestOptions = options ?? Options();
     Map<String, dynamic> _authorization = getAuthorizationHeader();
