@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_frame/http/http_utils.dart';
 import 'package:flutter_frame/utils/constant.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+import 'http/sp.dart';
+
+void main() async{
+
+  //SpUtil();
   HttpUtils.init(baseUrl: Constant.baseUrl);
   runApp(MyApp());
 }
@@ -12,6 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      ///监听当前的语言设置改变
+      localeResolutionCallback:(locale, supportedLocales){
+        Constant.countryCode = locale.countryCode;
+        print("当前国家的countryCode：${locale.countryCode}");
+        SpUtil().putString(Constant.locale, locale.countryCode);
+        return locale;
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.

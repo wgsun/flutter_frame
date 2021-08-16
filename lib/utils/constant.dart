@@ -10,4 +10,5 @@ class Constant {
 
   ///国家编
   static String countryCode = '';
+  static const String locale = 'locale';
 }

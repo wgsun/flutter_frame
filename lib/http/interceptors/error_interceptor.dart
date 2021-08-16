@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_frame/generated/l10n.dart';
 import 'package:flutter_frame/login/login_router.dart';
 import 'package:flutter_frame/routers/router_global.dart';
 import 'package:flutter_frame/utils/Log.dart';
@@ -33,9 +34,9 @@ class ErrorInterceptor extends InterceptorsWrapper {
       if (code == '1001') {
         RouterGlobal.navigatorKey.currentState.pushNamedAndRemoveUntil(
             LoginRouter.loginPage, ModalRoute.withName("/"));
-        //BuildContext? context = RouterGlobal.navigatorKey.currentContext;
+        BuildContext context = RouterGlobal.navigatorKey.currentContext;
         return Http.dio
-            .reject("登录信息失效，请重新登录");
+            .reject(S.of(context).login_has_expired_please_log_again);
       }
     } catch (err) {
       print("----出错了-----$err");
