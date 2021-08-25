@@ -16,6 +16,7 @@ class SpUtil {
 
   static Future<void> init() async {
     if (_prefs == null) {
+      print('init');
       _prefs = await SharedPreferences.getInstance();
     }
   }

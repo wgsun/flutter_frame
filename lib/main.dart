@@ -1,19 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_frame/http/http_utils.dart';
-import 'package:flutter_frame/utils/constant.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_frame/common/http/http_utils.dart';
+import 'package:flutter_frame/constants/constant.dart';
+import 'package:flutter_frame/common/utils/device_utils.dart';
+import 'package:flutter_frame/common/utils/log_util.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:sp_util/sp_util.dart';
 
-import 'http/sp.dart';
+
 
 void main() async{
 
-  //SpUtil();
+  /// 确保初始化完成
+  WidgetsFlutterBinding.ensureInitialized();
+
+  /// sp初始化
+  await SpUtil.getInstance();
+
   HttpUtils.init(baseUrl: Constant.baseUrl);
+
+
+  LogUtil.init();
+
+  /// 强制竖屏Pat
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  // 透明状态栏
+  if (Device.isAndroid) {
+    const SystemUiOverlayStyle systemUiOverlayStyle =
+    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
+
   runApp(MyApp());
+
+
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,11 +49,11 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
       ],
       ///监听当前的语言设置改变
-      localeResolutionCallback:(locale, supportedLocales){
-        Constant.countryCode = locale.countryCode;
-        print("当前国家的countryCode：${locale.countryCode}");
-        SpUtil().putString(Constant.locale, locale.countryCode);
-        return locale;
+      localeResolutionCallback:(deviceLocale, supportedLocales){
+        Constant.countryCode = deviceLocale.countryCode;
+        print("当前国家的countryCode：${deviceLocale.countryCode}");
+        SpUtil.putString(Constant.locale, deviceLocale.countryCode);
+        return deviceLocale;
       },
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -44,6 +71,8 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
+
+
 }
 
 class MyHomePage extends StatefulWidget {

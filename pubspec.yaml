@@ -36,7 +36,16 @@ dependencies:
   # 网络状态监听
   connectivity: ^3.0.6
 
-  #国际化
+  sp_util: ^2.0.3
+  #synchronized: ^3.0.0
+
+  device_info: ^2.0.2
+
+
+
+
+
+#国际化
   flutter_localizations:
     sdk: flutter
 

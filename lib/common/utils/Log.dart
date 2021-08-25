@@ -1,5 +1,5 @@
-import 'package:flutter_frame/utils/constant.dart';
-import 'package:flutter_frame/utils/log_util.dart';
+import 'package:flutter_frame/constants/constant.dart';
+import 'package:flutter_frame/common/utils/log_util.dart';
 import 'dart:convert' as convert;
 
 /// 输出Log工具类

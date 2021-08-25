@@ -1,7 +1,7 @@
 import 'dart:collection';
 import 'package:dio/dio.dart';
-import 'package:flutter_frame/http/cache.dart';
-import 'package:flutter_frame/http/sp.dart';
+import 'package:flutter_frame/common/http/cache.dart';
+import 'package:flutter_frame/common/http/sp.dart';
 
 class NetCacheInterceptor extends Interceptor {
   // 为确保迭代器顺序和对象插入时间一致顺序一致，我们使用LinkedHashMap

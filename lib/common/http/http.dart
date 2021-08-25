@@ -1,9 +1,9 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_frame/http/sp.dart';
-import 'package:flutter_frame/utils/Log.dart';
-import 'package:flutter_frame/utils/constant.dart';
-import 'package:flutter_frame/utils/utils.dart';
+import 'package:flutter_frame/common/http/sp.dart';
+import 'package:flutter_frame/common/utils/Log.dart';
+import 'package:flutter_frame/constants/constant.dart';
+import 'package:flutter_frame/common/utils/utils.dart';
 import 'cache.dart';
 import 'connectivity_request_retrier.dart';
 import 'global.dart';
