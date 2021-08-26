@@ -1,45 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_frame/common/http/http_utils.dart';
+import 'package:flutter_frame/business/routers/routers.dart';
 import 'package:flutter_frame/constants/constant.dart';
-import 'package:flutter_frame/common/utils/device_utils.dart';
-import 'package:flutter_frame/common/utils/log_util.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sp_util/sp_util.dart';
-
+import 'common/global.dart';
 
 
 void main() async{
 
-  /// 确保初始化完成
-  WidgetsFlutterBinding.ensureInitialized();
-
-  /// sp初始化
-  await SpUtil.getInstance();
-
-  HttpUtils.init(baseUrl: Constant.baseUrl);
-
-
-  LogUtil.init();
-
-  /// 强制竖屏Pat
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
-  // 透明状态栏
-  if (Device.isAndroid) {
-    const SystemUiOverlayStyle systemUiOverlayStyle =
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
-
-  runApp(MyApp());
-
-
+  Global.init().then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatelessWidget {
 
+  MyApp({Key key}) : super(key: key){
+    Routers.initRouters();
+  }
 
   @override
   Widget build(BuildContext context) {

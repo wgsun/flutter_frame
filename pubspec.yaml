@@ -35,11 +35,16 @@ dependencies:
   shared_preferences: ^2.0.6
   # 网络状态监听
   connectivity: ^3.0.6
-
-  sp_util: ^2.0.3
+  #工具类开源库
+  flustars: ^2.0.1
   #synchronized: ^3.0.0
 
+  # WebView插件
+  webview_flutter: 2.0.7
+
   device_info: ^2.0.2
+
+
 
 
 
@@ -68,6 +73,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/images/other/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
