@@ -41,7 +41,7 @@ dependencies:
 
   # WebView插件
   webview_flutter: 2.0.7
-
+  # 设备相关信息获取
   device_info: ^2.0.2
 
 
