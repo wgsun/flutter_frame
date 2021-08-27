@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_frame/common/global.dart';
 import 'package:flutter_frame/generated/l10n.dart';
-import 'package:flutter_frame/business/view/login/login_router.dart';
-import 'package:flutter_frame/business/routers/router_global.dart';
+import 'package:flutter_frame/business/routers/pages/login_router.dart';
 import 'package:flutter_frame/common/utils/Log.dart';
 import 'package:flutter_frame/common/utils/toast.dart';
 import '../app_exceptions.dart';
@@ -32,9 +32,9 @@ class ErrorInterceptor extends InterceptorsWrapper {
 
       ///登录失效
       if (code == '1001') {
-        RouterGlobal.navigatorKey.currentState.pushNamedAndRemoveUntil(
+        Global.navigatorKey.currentState.pushNamedAndRemoveUntil(
             LoginRouter.loginPage, ModalRoute.withName("/"));
-        BuildContext context = RouterGlobal.navigatorKey.currentContext;
+        BuildContext context = Global.navigatorKey.currentContext;
         return Http.dio
             .reject(S.of(context).login_has_expired_please_log_again);
       }

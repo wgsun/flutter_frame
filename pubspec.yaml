@@ -37,8 +37,8 @@ dependencies:
   connectivity: ^3.0.6
   #工具类开源库
   flustars: ^2.0.1
-  #synchronized: ^3.0.0
-
+  #页面刷新框架
+  pull_to_refresh: ^2.0.0
   # WebView插件
   webview_flutter: 2.0.7
   # 设备相关信息获取
