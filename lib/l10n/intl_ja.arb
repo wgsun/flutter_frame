@@ -1,3 +1,8 @@
 {
-  "login_has_expired_please_log_again": "登录信息失效，请重新登录"
+  "login_has_expired_please_log_again": "登录信息失效，请重新登录",
+  "tabs_home": "首页",
+  "tabs_project": "项目",
+  "tabs_wechat_account": "公众号",
+  "tabs_structure": "体系",
+  "tabs_mine": "我的"
 }

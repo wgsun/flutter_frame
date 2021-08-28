@@ -35,12 +35,15 @@ class MyApp extends StatelessWidget {
         return false;
       },
       child: MaterialApp(
-        //去掉右上角debug
+        ///去掉右上角debug
         debugShowCheckedModeBanner: false,
+        ///导航键
         navigatorKey: Global.navigatorKey,
+        ///生成路由
         onGenerateRoute: Routers.router.generator,
+        ///主页
         home: SplashPage(),
-
+        ///本地化委托
         localizationsDelegates: [
           S.delegate,
           RefreshLocalizations.delegate, //下拉刷新
@@ -48,6 +51,7 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
+        ///支持语言
         supportedLocales: S.delegate.supportedLocales,
 
         ///监听当前的语言设置改变
@@ -58,6 +62,7 @@ class MyApp extends StatelessWidget {
           return deviceLocale;
         },
         title: 'Flutter Frame',
+        ///主题
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
