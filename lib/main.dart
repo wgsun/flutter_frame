@@ -4,6 +4,7 @@ import 'package:flutter_frame/business/routers/routers.dart';
 import 'package:flutter_frame/business/view/splash_page.dart';
 import 'package:flutter_frame/constants/constant.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sp_util/sp_util.dart';
 import 'common/global.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     setDesignWHD(720, 1280);
 
-    return RefreshConfiguration(
+    Widget app = RefreshConfiguration(
       footerTriggerDistance: 15,
       dragSpeedRatio: 0.91,
       headerBuilder: () => MaterialClassicHeader(),
@@ -37,12 +38,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         ///去掉右上角debug
         debugShowCheckedModeBanner: false,
+
         ///导航键
         navigatorKey: Global.navigatorKey,
+
         ///生成路由
         onGenerateRoute: Routers.router.generator,
+
         ///主页
         home: SplashPage(),
+
         ///本地化委托
         localizationsDelegates: [
           S.delegate,
@@ -51,6 +56,7 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
+
         ///支持语言
         supportedLocales: S.delegate.supportedLocales,
 
@@ -62,11 +68,19 @@ class MyApp extends StatelessWidget {
           return deviceLocale;
         },
         title: 'Flutter Frame',
+
         ///主题
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
       ),
     );
+    return OKToast(
+        child: app,
+        backgroundColor: Colors.black54,
+        textPadding:
+            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+        radius: 20.0,
+        position: ToastPosition.bottom);
   }
 }

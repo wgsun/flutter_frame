@@ -5,6 +5,7 @@ import 'package:flutter_frame/business/view/tab/my_page.dart';
 import 'package:flutter_frame/business/view/tab/project_page.dart';
 import 'package:flutter_frame/business/view/tab/structure_page.dart';
 import 'package:flutter_frame/business/view/tab/whchat_account_page.dart';
+import 'package:flutter_frame/common/utils/toast.dart';
 import 'package:flutter_frame/generated/l10n.dart';
 import 'package:flutter_frame/res/colours.dart';
 
@@ -20,6 +21,12 @@ class TabNavigatorState extends State<TabNavigator> {
   var pageControner = PageController();
   int selectIndex = 0;
   DateTime lastPressed;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500)).then((value) =>  Toast.show("进入主页"));
+  }
 
   @override
   Widget build(BuildContext context) {
